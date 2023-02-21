@@ -1,4 +1,4 @@
-from knapsack import Knapsack
+from knapsack import Knapsack, Allocation
 
 
 def greedy_solver(knapsack: Knapsack):
@@ -17,5 +17,5 @@ def greedy_solver(knapsack: Knapsack):
             capacity -= cand[1][0]
         iterator += 1
     
-    return allocation, value
+    return Allocation(allocation, value)
         
