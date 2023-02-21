@@ -49,3 +49,11 @@ class KnapsackGenerator:
         ) for _ in range(num_items)]
 
         return Knapsack(capacity, candidates)
+
+    def create(self, capacity: int, weights: list, values: list):
+        candidates: list = [Candidate(
+            weight,
+            values[idx]
+        ) for idx, weight in enumerate(weights)]
+        
+        return Knapsack(capacity, candidates)
