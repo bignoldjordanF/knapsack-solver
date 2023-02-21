@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from collections import namedtuple
 
 
-Knapsack = namedtuple('capacity', 'candidates')
-Candidate = namedtuple('name', 'weight', 'value')
+Knapsack = namedtuple('knapsack', ('capacity', 'candidates'))
+Candidate = namedtuple('candidate', ('weight', 'value'))
 
 class KnapsackGenerator:
     def __init__(
@@ -34,9 +34,8 @@ class KnapsackGenerator:
         capacity: int = random.randint(self.min_capacity, self.max_capacity)
         num_items: int = random.randint(self.min_num_items, self.max_num_items)
         candidates: list = [Candidate(
-            pid,
             random.randint(self.min_weight, self.max_weight),
             random.randint(self.min_value, self.max_value)
-        ) for pid in range(num_items)]
-        
+        ) for _ in range(num_items)]
+
         return Knapsack(capacity, candidates)
