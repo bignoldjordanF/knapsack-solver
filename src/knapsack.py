@@ -2,6 +2,7 @@ import random
 from dataclasses import dataclass
 from collections import namedtuple
 
+Allocation = namedtuple('allocation', ('knapsack', 'value'))
 Candidate = namedtuple('candidate', ('weight', 'value'))
 
 @dataclass
