@@ -2,9 +2,19 @@ import random
 from dataclasses import dataclass
 from collections import namedtuple
 
-
-Knapsack = namedtuple('knapsack', ('capacity', 'candidates'))
 Candidate = namedtuple('candidate', ('weight', 'value'))
+
+@dataclass
+class Knapsack:
+    capacity: int
+    candidates: list
+
+    def __str__(self):
+        str_repr: str = f'knapsack capacity: {self.capacity}\n'
+        for cidx, candidate in enumerate(self.candidates):
+            str_repr += f'{cidx}: {candidate}\n'
+        return str_repr[:-1]
+
 
 class KnapsackGenerator:
     def __init__(
