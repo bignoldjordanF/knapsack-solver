@@ -3,6 +3,11 @@ from collections import deque
 from dataclasses import dataclass
 
 
+# References:
+# [0] https://www.geeksforgeeks.org/implementation-of-0-1-knapsack-using-branch-and-bound/?ref=lbp
+# [1] https://stackoverflow.com/questions/43965835/knapsack-branch-and-bound-wrong-result
+
+
 @dataclass
 class KnapsackNode:
     level: int
