@@ -1,7 +1,7 @@
-from knapsack import KnapsackInstance, Allocation
+from knapsack import KnapsackInstance, KnapsackAllocation
 
 
-def dynamic_programming_solver(knapsack: KnapsackInstance) -> Allocation:
+def dynamic_programming_solver(knapsack: KnapsackInstance) -> KnapsackAllocation:
     dp: list = [
         [0 for _ in range(knapsack.capacity + 1)]
         for _ in range(len(knapsack.candidates) + 1)
@@ -32,4 +32,4 @@ def dynamic_programming_solver(knapsack: KnapsackInstance) -> Allocation:
             j -= knapsack.candidates[i - 1].weight
         i -= 1
 
-    return Allocation(allocation, best_value)
+    return KnapsackAllocation(allocation, best_value)

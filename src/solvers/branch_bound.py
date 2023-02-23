@@ -1,4 +1,4 @@
-from knapsack import KnapsackInstance, Allocation
+from knapsack import KnapsackInstance, KnapsackAllocation
 from collections import deque
 from dataclasses import dataclass
 
@@ -30,7 +30,7 @@ def bound(u, n, capacity, candidates):
     return profit_bound
 
 
-def branch_and_bound_solver(knapsack: KnapsackInstance) -> Allocation:
+def branch_and_bound_solver(knapsack: KnapsackInstance) -> KnapsackAllocation:
     candidates: list = [(pid, cand) for pid, cand in enumerate(knapsack.candidates)]
     items: list = sorted(candidates, key=lambda t: t[1].value/t[1].weight, reverse=True)
     total_items = len(candidates)

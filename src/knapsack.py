@@ -2,8 +2,8 @@ import random
 from dataclasses import dataclass
 from collections import namedtuple
 
-Allocation = namedtuple('allocation', ('knapsack', 'value'))
-Candidate = namedtuple('candidate', ('weight', 'value'))
+KnapsackAllocation = namedtuple('allocation', ('knapsack', 'value'))
+KnapsackItem = namedtuple('candidate', ('weight', 'value'))
 
 @dataclass
 class KnapsackInstance:
@@ -44,7 +44,7 @@ class KnapsackGenerator:
     def generate(self) -> KnapsackInstance:
         capacity: int = random.randint(self.min_capacity, self.max_capacity)
         num_items: int = random.randint(self.min_num_items, self.max_num_items)
-        candidates: list = [Candidate(
+        candidates: list = [KnapsackItem(
             random.randint(self.min_weight, self.max_weight),
             random.randint(self.min_value, self.max_value)
         ) for _ in range(num_items)]
@@ -52,7 +52,7 @@ class KnapsackGenerator:
         return KnapsackInstance(capacity, candidates)
 
     def create(self, capacity: int, weights: list, values: list):
-        candidates: list = [Candidate(
+        candidates: list = [KnapsackItem(
             weight,
             values[idx]
         ) for idx, weight in enumerate(weights)]
