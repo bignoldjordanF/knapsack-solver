@@ -3,16 +3,16 @@ from dataclasses import dataclass
 from collections import namedtuple
 
 KnapsackAllocation = namedtuple('allocation', ('knapsack', 'value'))
-KnapsackItem = namedtuple('candidate', ('weight', 'value'))
+KnapsackItem = namedtuple('item', ('weight', 'value'))
 
 @dataclass
 class KnapsackInstance:
     capacity: int
-    candidates: list
+    items: list
 
     def __str__(self):
         str_repr: str = f'knapsack capacity: {self.capacity}\n'
-        for cidx, candidate in enumerate(self.candidates):
+        for cidx, candidate in enumerate(self.items):
             str_repr += f'{cidx}: {candidate}\n'
         return str_repr[:-1]
 

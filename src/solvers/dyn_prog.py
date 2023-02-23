@@ -1,35 +1,35 @@
 from knapsack import KnapsackInstance, KnapsackAllocation
 
 
-def dynamic_programming_solver(knapsack: KnapsackInstance) -> KnapsackAllocation:
+def dynamic_programming_solver(instance: KnapsackInstance) -> KnapsackAllocation:
     dp: list = [
-        [0 for _ in range(knapsack.capacity + 1)]
-        for _ in range(len(knapsack.candidates) + 1)
+        [0 for _ in range(instance.capacity + 1)]
+        for _ in range(len(instance.items) + 1)
     ]
 
-    for i in range(1, len(knapsack.candidates) + 1):
-        for j in range(1, knapsack.capacity + 1):
-            candidate = knapsack.candidates[i - 1]
+    for i in range(1, len(instance.items) + 1):
+        for j in range(1, instance.capacity + 1):
+            item = instance.items[i - 1]
 
             value_without_item: int = dp[i - 1][j]
-            knapsack_can_hold: bool = candidate.weight <= j
+            knapsack_can_hold: bool = item.weight <= j
 
             if not knapsack_can_hold:
                 dp[i][j] = value_without_item
                 continue
             
-            value_with_item: int = dp[i - 1][j - candidate.weight] + candidate.value
+            value_with_item: int = dp[i - 1][j - item.weight] + item.value
             dp[i][j] = max(value_with_item, value_without_item)
 
     best_value: int = dp[-1][-1]
     allocation: list = []
-    i: int = len(knapsack.candidates)
-    j: int = knapsack.capacity
+    i: int = len(instance.items)
+    j: int = instance.capacity
 
     while i > 0 and j > 0:
         if dp[i][j] != dp[i - 1][j]:
             allocation.append(i - 1)
-            j -= knapsack.candidates[i - 1].weight
+            j -= instance.items[i - 1].weight
         i -= 1
 
     return KnapsackAllocation(allocation, best_value)
