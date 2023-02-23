@@ -1,7 +1,7 @@
-from knapsack import Knapsack, Allocation
+from knapsack import KnapsackInstance, Allocation
 
 
-def dynamic_programming_solver(knapsack: Knapsack) -> Allocation:
+def dynamic_programming_solver(knapsack: KnapsackInstance) -> Allocation:
     dp: list = [
         [0 for _ in range(knapsack.capacity + 1)]
         for _ in range(len(knapsack.candidates) + 1)

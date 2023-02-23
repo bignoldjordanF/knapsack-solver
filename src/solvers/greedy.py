@@ -1,7 +1,7 @@
-from knapsack import Knapsack, Allocation
+from knapsack import KnapsackInstance, Allocation
 
 
-def __run_greedy(knapsack: Knapsack, candidates: list) -> Allocation:
+def __run_greedy(knapsack: KnapsackInstance, candidates: list) -> Allocation:
     capacity: int = knapsack.capacity
     allocation: list = []
     value: int = 0
@@ -17,14 +17,14 @@ def __run_greedy(knapsack: Knapsack, candidates: list) -> Allocation:
     return Allocation(allocation, value)
 
 
-def ratio_greedy_solver(knapsack: Knapsack) -> Allocation:
+def ratio_greedy_solver(knapsack: KnapsackInstance) -> Allocation:
     candidates: list = [(pid, cand, cand.value/cand.weight) for pid, cand in enumerate(knapsack.candidates)]
     candidates: list = sorted(candidates, key=lambda t: t[2], reverse=True)
 
     return __run_greedy(knapsack, candidates)
 
 
-def greedy_solver(knapsack: Knapsack) -> Allocation:
+def greedy_solver(knapsack: KnapsackInstance) -> Allocation:
     candidates: list = [(pid, cand) for pid, cand in enumerate(knapsack.candidates)]
     candidates: list = sorted(candidates, key=lambda t: t[1].value, reverse=True)
 
