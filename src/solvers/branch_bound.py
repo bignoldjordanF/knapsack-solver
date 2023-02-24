@@ -15,7 +15,7 @@ class KnapsackNode:
     allocation: list  # The allocation (knapsack) found by this path in the decision tree
 
 
-def bound(node: KnapsackNode, n_items: int, capacity: int, items: list):
+def __bound(node: KnapsackNode, n_items: int, capacity: int, items: list):
     """
     We relax the strict binary constraint on the decision variables such
     that items may be partially included in the knapsack. This problem,
