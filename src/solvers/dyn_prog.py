@@ -1,5 +1,7 @@
 from knapsack import KnapsackInstance, KnapsackAllocation
 
+# References:
+# [1] https://medium.com/@fabianterh/how-to-solve-the-knapsack-problem-with-dynamic-programming-eb88c706d3cf
 
 def dynamic_programming_solver(instance: KnapsackInstance) -> KnapsackAllocation:
     dp: list = [
