@@ -51,6 +51,14 @@ def bound(node: KnapsackNode, n_items: int, capacity: int, items: list):
 
 
 def branch_and_bound_solver(knapsack: KnapsackInstance) -> KnapsackAllocation:
+    """
+    We start with a root knapsack node, and then generate child nodes which
+    do or do not contain each successive item in a sorted list. We expand
+    promising nodes, i.e., nodes which have an upper bound, as defined by
+    a constraint relaxation, that is higher than the current best value.
+    These promising nodes eventually lead to the returned optimal solution.
+    """
+
     # The items are sorted by their value-weight ratio for the bound algorithm,
     # which uses a greedy approach:
     items: list = [(pid, cand) for pid, cand in enumerate(knapsack.items)]
@@ -105,7 +113,7 @@ def branch_and_bound_solver(knapsack: KnapsackInstance) -> KnapsackAllocation:
         # We repeat the process for a child node that does not include
         # the current item (level). We do not try to update the 
         # max_value or max_allocation variables.
-        
+
         child = KnapsackNode(0, 0, 0, 0, [])
         child.level = curr.level + 1
         child.weight = curr.weight
