@@ -103,7 +103,7 @@ def branch_and_bound_solver(knapsack: KnapsackInstance) -> KnapsackAllocation:
         # The upper bound tells us the optimal solution given the child
         # node provided we can partially include the remaining items
         # {level + 1, ..., n}.
-        child.bound = bound(child, len(items), knapsack.capacity, items)
+        child.bound = __bound(child, len(items), knapsack.capacity, items)
         
         # If the child bound is larger than the max_value, then there
         # is still 'potential', so add it to the queue.
@@ -119,7 +119,7 @@ def branch_and_bound_solver(knapsack: KnapsackInstance) -> KnapsackAllocation:
         child.weight = curr.weight
         child.value = curr.value
         child.allocation = curr.allocation[:]
-        child.bound = bound(child, len(items), knapsack.capacity, items)
+        child.bound = __bound(child, len(items), knapsack.capacity, items)
 
         if child.bound > max_value:
             queue.append(child)
