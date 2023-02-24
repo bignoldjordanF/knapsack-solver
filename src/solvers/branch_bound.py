@@ -14,6 +14,7 @@ class KnapsackNode:
     value: int
     bound: int
     weight: int
+    allocation: list
 
 
 def bound(u, n, capacity, items):
@@ -42,13 +43,14 @@ def branch_and_bound_solver(knapsack: KnapsackInstance) -> KnapsackAllocation:
     weight = knapsack.capacity
 
     Q: deque = deque()
-    u: KnapsackNode = KnapsackNode(-1, 0, 0, 0)
+    u: KnapsackNode = KnapsackNode(-1, 0, 0, 0, [])
     Q.append(u)
 
     maxProfit: int = 0
+    maxAllocation: list = []
     while Q:
         u = Q.popleft()
-        v = KnapsackNode(0, 0, 0, 0)
+        v = KnapsackNode(0, 0, 0, 0, [])
         if u.level == -1:
             v.level = 0
 
@@ -58,19 +60,23 @@ def branch_and_bound_solver(knapsack: KnapsackInstance) -> KnapsackAllocation:
         v.level = u.level + 1
         v.weight = u.weight + items[v.level][1].weight
         v.value = u.value + items[v.level][1].value
+        v.allocation = u.allocation[:] + [items[v.level][0]]
+
         if (v.weight <= weight and v.value > maxProfit):
             maxProfit = v.value
+            maxAllocation = v.allocation
 
         v.bound = bound(v, total_items, weight, items)
         if (v.bound > maxProfit):
             Q.append(v)
 
-        v = KnapsackNode(0, 0, 0, 0) 
+        v = KnapsackNode(0, 0, 0, 0, []) 
         v.level = u.level + 1   
         v.weight = u.weight
         v.value = u.value
+        v.allocation = u.allocation[:]
         v.bound = bound(v, total_items, weight, items)
         if (v.bound > maxProfit):
             Q.append(v)
         
-    return maxProfit
+    return KnapsackAllocation(maxAllocation, maxProfit)
