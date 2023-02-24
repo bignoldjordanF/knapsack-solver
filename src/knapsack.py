@@ -2,11 +2,23 @@ import random
 from dataclasses import dataclass
 from collections import namedtuple
 
+
 KnapsackAllocation = namedtuple('allocation', ('knapsack', 'value'))
+KnapsackAllocation.__doc__ = \
+    """Stores allocations found for knapsack instances by optimisation algorithms"""
+
+
 KnapsackItem = namedtuple('item', ('weight', 'value'))
+KnapsackItem.__doc__ = \
+    """Stores items as (weight, value) pairs in knapsack instances"""
+
 
 @dataclass
 class KnapsackInstance:
+    """
+    Stores a knapsack instance as a capacity integer and a list of
+    KnapsackItem instances to be passed to optimisation functions.
+    """
     capacity: int
     items: list
 
@@ -18,6 +30,10 @@ class KnapsackInstance:
 
 
 class KnapsackGenerator:
+    """
+    Used to generate randomly or create KnapsackInstance objects through
+    the generate() and create() methods respectively.
+    """
     def __init__(
         self,
         min_capacity: int=5,
