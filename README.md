@@ -1,8 +1,16 @@
 # Knapsack Solvers
 
+## Description
+
+This project contains implementations of optimisation algorithms in Python to solve the binary knapsack problem. It includes a generator class create knapsack instances from input data or at random, and functions to solve the instances, which return an optimal allocation and value pair. The algorithms available are:
+
+* Greedy Algorithm
+* Dynamic Programming
+* $...$
+
 ## Binary Knapsack Problem
 
-This project contains implementations of optimisation algorithms in Python to solve the binary knapsack problem. In this problem, we are typically given a set of items and a knapsack with a weight capacity. Each item has some value and some weight. We must compute the largest sum of values the knapsack can hold without exceeding the weight capacity. More formally, this could be expressed as:
+In the binary knapsack problem, we are typically given a set of items and a knapsack with a weight capacity. Each item has some value and some weight. We must compute the largest sum of values the knapsack can hold without exceeding the weight capacity. A typical problem instance may be expressed more formally as follows:
 
 * $\text{A maximum knapsack capacity }W\text{, where } W\in{\mathbb{Z}}.$
 * $\text{A set of candidate items }N=\lbrace{}1,2,...,n\rbrace{}\text{, where }n\text{ is the number of candidate items, and thus }n\in{\mathbb{Z}}.$
