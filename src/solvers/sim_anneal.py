@@ -85,7 +85,7 @@ def __simulated_annealing_solver(
             # Otherwise, accept a worse allocation with some probability:
             else:
                 q = random.uniform(0, 1)
-                p = np.float128(np.exp(np.float128(-delta_value / current_temperature)))
+                p = np.exp(-delta_value / current_temperature)
                 if q < p:
                     current_allocation = neighbour_allocation
                 count_num_non_improve += 1
