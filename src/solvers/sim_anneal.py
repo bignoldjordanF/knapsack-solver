@@ -29,6 +29,11 @@ class SAKnapsack:
         the total. Allocations exceeding the weight capacity are given
         a negative valuation, such that the default allocation (all
         zeroes) is better.
+
+        Example:
+        self:      [1, 0, 0, 1, 0]
+        neighbour: [1, 0, 0, 1, 1]
+                                ^
         """
 
         # Create a deep copy of the allocation for the new object:
