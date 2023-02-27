@@ -7,6 +7,10 @@ import random
 # Ignore Exp Overflow
 np.seterr(over='ignore')
 
+# TODO: This doesn't work very well, and it isn't very fast.
+# A better neighbourhood is probably in order, and a better
+# tuning of the parameters.
+
 
 @dataclass
 class SAKnapsack:
@@ -20,11 +24,11 @@ class SAKnapsack:
 
     def neighbour(self):
         """
-        Generates a neighbour by randomly flipping a single bit
-        and adding or subtracting the corresponding weight and value
-        from the total. Note that allocations exceeding the weight
-        capacity are given a negative valuation, such that the
-        default allocation (all zeroes) is better.
+        Generates a neighbour by randomly flipping a single bit and adding
+        adding or subtracting the corresponding weight and value from
+        the total. Allocations exceeding the weight capacity are given
+        a negative valuation, such that the default allocation (all
+        zeroes) is better.
         """
         _allocation: list = self.allocation[:]
         _value: int = self.value
