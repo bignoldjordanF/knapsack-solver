@@ -108,6 +108,20 @@ NUM_NON_IMPROVE = 100000
 
 
 def simulated_annealing_solver(instance: KnapsackInstance):
+    """
+    We start from an empty allocation (zero weight and value) and randomly
+    generate neighbours to converge on a good, hopefully near-optimal, 
+    solution. 
+    
+    The convergence process is as follows: we generate a 
+    neighbouring solution from the current solution and compare their
+    values. The neighbouring solution becomes current if it has a better
+    value. Otherwise, the neighbouring solution is accepted with some
+    decreasing probability, i.e., less `worse` solutions are accepted
+    as the annealing process goes on. Accepting worse solutions allows
+    us to escape local optima. We record the best solution found
+    throughout annealing and return it at the end.
+    """
     return __simulated_annealing_solver(
         instance,
         INITIAL_TEMPERATURE,
