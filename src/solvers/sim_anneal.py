@@ -8,7 +8,7 @@ import random
 np.seterr(over='ignore')
 
 # TODO: This doesn't work very well, and it isn't very fast.
-# A better neighbourhood is probably in order, and a better
+# A better neighbourhood is probably in order, and futher
 # tuning of the parameters.
 
 
