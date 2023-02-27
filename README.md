@@ -4,8 +4,10 @@
 
 This project contains implementations of optimisation algorithms in Python to solve the binary knapsack problem. It includes a generator class create knapsack instances from input data or at random, and functions to solve the instances, which return an optimal allocation and value pair. The algorithms available are:
 
-* Greedy Algorithm
-* Dynamic Programming
+* Dynamic Programming (Exact)
+* Branch & Bound (Exact)
+* Greedy & Ratio Greedy (Approximation)
+* Simulated Annealing (Approximation)
 * $...$
 
 ## Binary Knapsack Problem
