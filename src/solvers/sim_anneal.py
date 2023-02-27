@@ -30,17 +30,28 @@ class SAKnapsack:
         a negative valuation, such that the default allocation (all
         zeroes) is better.
         """
+
+        # Create a deep copy of the allocation for the new object:
         _allocation: list = self.allocation[:]
         _value: int = self.value
         _weight: int = self.weight
 
+        # Generate randomly an index in the allocation and flip
+        # the bit, i.e., include/exclude the item at that index:
         ridx: int = random.randint(0, len(_allocation) - 1)
         _allocation[ridx] = int(not _allocation[ridx])
 
+        # We update the value and weight by setting false bits
+        # to -1 such that it subtracts if the item was excluded:
         pos_neg: int = 1 if _allocation[ridx] else -1
         _value = abs(_value) + (pos_neg * self.instance.items[ridx].value)
         _weight += pos_neg * self.instance.items[ridx].weight
 
+        # We negatively value allocations whose weight exceeds
+        # the knapsack capacity. We still preserve its value,
+        # and use abs(_value) above to update it where one
+        # of its neighbours may reduce the total weight
+        # below the knapsack capacity:
         if _weight > self.instance.capacity:
             _value = -_value
 
