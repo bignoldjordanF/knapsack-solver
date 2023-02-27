@@ -58,6 +58,12 @@ class KnapsackGenerator:
         self.max_value = max(min_value, max_value)
 
     def generate(self) -> KnapsackInstance:
+        """
+        Generates a random KnapsackInstance pair (capacity, [KnapsackItem...])
+        where the second argument is a list of KnapsackItem pairs (weight, value).
+        The capacity, number of items, weights and values are randomly generated
+        and bounded by the values passed at construction.
+        """
         capacity: int = random.randint(self.min_capacity, self.max_capacity)
         num_items: int = random.randint(self.min_num_items, self.max_num_items)
         candidates: list = [KnapsackItem(
@@ -68,6 +74,12 @@ class KnapsackGenerator:
         return KnapsackInstance(capacity, candidates)
 
     def create(self, capacity: int, weights: list, values: list):
+        """
+        Creates a KnapsackInstance pair (capacity, [KnapsackItem...]) where
+        the second argument is a list of KnapsackItem pairs (weight, value).
+        The knapsack instance values (capacity, [weight...], [values...])
+        are passed into the function manually. No randomness is involved.
+        """
         candidates: list = [KnapsackItem(
             weight,
             values[idx]
