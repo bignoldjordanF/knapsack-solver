@@ -56,7 +56,7 @@ def __simulated_annealing_solver(
 ):
     # Track the current temperature and the number of 
     # non-improved solutions:
-    current_temperature: float = INITIAL_TEMPERATURE
+    current_temperature: float = initial_temperature
     count_num_non_improve: int = 0
 
     # Track the current allocation and best allocation
