@@ -21,7 +21,7 @@ knapsack: KnapsackInstance = generator.generate()
 print()
 print('KNAPSACK INSTANCE')
 print('-' * 17)
-print(knapsack.con())
+print(str(knapsack))
 
 print()
 print('LINEAR APPROXIMATIONS')
