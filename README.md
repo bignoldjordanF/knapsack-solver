@@ -16,7 +16,7 @@ Before using the solvers, we wrap our problems in ```KnapsackInstance``` objects
 
 ```python
 
-from knapsack import KnapsackGenerator, KnapsackInstance
+from knapsack import *
 
 # You can pass minimum and maximum randomness bounds
 # for each of capacity, num_items, weight and values.
@@ -40,16 +40,13 @@ The solvers can be used by importing them from `solvers` and passing our created
 
 # ...
 
-from knapsack import KnapsackAllocation
-from solvers.genetic import genetic_algorithm_solver
-
 allocation: KnapsackAllocation = genetic_algorithm_solver(instance)
 print(allocation.knapsack)  # e.g. [0, 1]
 print(allocation.value)  # e.g. 11
 
 ```
 
-A file containing examples for generating a problem instance and using the solving algorithms can be found at ```src\example.py```.
+A file containing examples for generating a problem instance and using the solving algorithms can be found at ```example.py```.
 
 ## Binary Knapsack Problem
 
