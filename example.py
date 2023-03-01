@@ -1,4 +1,5 @@
 from knapsack import *
+from knapsack.solvers import *
 
 
 generator: KnapsackGenerator = KnapsackGenerator(
