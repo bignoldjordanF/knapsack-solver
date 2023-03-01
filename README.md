@@ -8,7 +8,7 @@ This project contains implementations of optimisation algorithms in Python to so
 * Branch & Bound (Exact)
 * Greedy & Ratio Greedy (Approximation)
 * Simulated Annealing (Approximation)
-* $...$
+* Genetic Algorithm (Approximation)
 
 ## Binary Knapsack Problem
 
