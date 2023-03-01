@@ -1,4 +1,4 @@
-# Knapsack Solvers
+# Knapsack Solver
 
 ## Description
 
