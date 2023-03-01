@@ -28,8 +28,8 @@ class KnapsackInstance:
             str_repr += f'{cidx}: {candidate}\n'
         return str_repr[:-1] 
         
-    def __generator_create(self):
-        return f'generator.create({self.capacity}, {[i.weight for i in self.items]}, {[i.value for i in self.items]})'
+    def to_tuple(self):
+        return f'({self.capacity}, {[i.weight for i in self.items]}, {[i.value for i in self.items]})'
 
 
 class KnapsackGenerator:
