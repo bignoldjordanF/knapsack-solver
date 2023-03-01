@@ -1,9 +1,5 @@
 from knapsack import *
-from solvers.greedy import greedy_solver, ratio_greedy_solver
-from solvers.dyn_prog import dynamic_programming_solver
-from solvers.branch_bound import branch_and_bound_solver
-from solvers.sim_anneal import simulated_annealing_solver
-from solvers.genetic import genetic_algorithm_solver
+from solvers import *
 
 
 generator: KnapsackGenerator = KnapsackGenerator(
