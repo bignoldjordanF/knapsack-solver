@@ -28,7 +28,7 @@ class KnapsackInstance:
             str_repr += f'{cidx}: {candidate}\n'
         return str_repr[:-1] 
         
-    def create_constructor(self):
+    def __generator_create(self):
         return f'generator.create({self.capacity}, {[i.weight for i in self.items]}, {[i.value for i in self.items]})'
 
 
