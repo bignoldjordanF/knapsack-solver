@@ -40,6 +40,8 @@ The solvers can be used by importing them from `solvers` and passing our created
 
 # ...
 
+from knapsack.solvers import *
+
 allocation: KnapsackAllocation = genetic_algorithm_solver(instance)
 print(allocation.knapsack)  # e.g. [0, 1]
 print(allocation.value)  # e.g. 11
@@ -47,6 +49,16 @@ print(allocation.value)  # e.g. 11
 ```
 
 A file containing examples for generating a problem instance and using the solving algorithms can be found at ```example.py```.
+
+## Available Solvers
+All of the solvers take a single `KnapsackInstance` object. They can all be imported at once, or individually:
+
+* `from knapsack.solvers import dynamic_programming_solver`
+* `from knapsack.solvers import branch_and_bound_solver`
+* `from knapsack.solvers import greedy_solver`
+* `from knapsack.solvers import ratio_greedy_solver`
+* `from knapsack.solvers import simulated_annealing_solver`
+* `from knapsack.solvers import genetic_algorithm_solver`
 
 ## Binary Knapsack Problem
 
