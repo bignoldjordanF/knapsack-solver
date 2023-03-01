@@ -10,6 +10,47 @@ This project contains implementations of optimisation algorithms in Python to so
 * Simulated Annealing (Approximation)
 * Genetic Algorithm (Approximation)
 
+## Example Use
+
+Before using the solvers, we wrap our problems in ```KnapsackInstance``` objects, using the ```KnapsackGenerator``` class. We can randomly generate instances or pass our own instance (capacity, weights and values):
+
+```python
+
+from knapsack import KnapsackGenerator, KnapsackInstance
+
+# You can pass minimum and maximum randomness bounds
+# for each of capacity, num_items, weight and values.
+generator: KnapsackGenerator = KnapsackGenerator()
+
+# We can use generate() for a random instance:
+instance: KnapsackInstance = generator.generate()
+
+# We can use create() for a custom instance:
+instance: KnapsackInstance = generator.create(
+  80,  # Capacity
+  [40, 25, 45, 60],  # Weights/Sizes
+  [6, 5, 2, 8]  # Values
+)
+
+```
+
+The solvers can be used by importing them from `solvers` and passing our created `KnapsackInstance`. They return a named tuple `KnapsackAllocation`, which has attributes `allocation` and `value`.
+
+```python
+
+# ...
+
+from knapsack import KnapsackAllocation
+from solvers.genetic import genetic_algorithm_solver
+
+allocation: KnapsackAllocation = genetic_algorithm_solver(instance)
+print(allocation.knapsack)  # e.g. [0, 1]
+print(allocation.value)  # e.g. 11
+
+```
+
+A file containing examples for generating a problem instance and using the solving algorithms can be found at ```src\example.py```.
+
 ## Binary Knapsack Problem
 
 In the binary knapsack problem, we are typically given a set of items and a knapsack with a weight capacity. Each item has some value and some weight. We must compute the largest sum of values the knapsack can hold without exceeding the weight capacity. A typical problem instance may be expressed more formally as follows:
