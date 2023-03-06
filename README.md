@@ -64,10 +64,10 @@ All of the solvers take a single `KnapsackInstance` object. They can all be impo
 
 In the binary knapsack problem, we are typically given a set of items and a knapsack with a weight capacity. Each item has some value and some weight. We must compute the largest sum of values the knapsack can hold without exceeding the weight capacity. A typical problem instance may be expressed more formally as follows:
 
-* $\text{A maximum knapsack capacity }W\text{, where } W\in{\mathbb{Z}}.$
-* $\text{A set of candidate items }N=\lbrace{}1,2,...,n\rbrace{}\text{, where }n\text{ is the number of candidate items, and thus }n\in{\mathbb{Z}}.$
-* $\text{A weight function }w\text{ defining the weight for each item such that }w_i:i\mapsto{\mathbb{R}}\space\forall{i\in{N}}.$
-* $\text{A value function }v\text{ defining the value for each item such that }v_i:i\mapsto{\mathbb{R}}\space\forall{i\in{N}}.$
+* $\text{A maximum knapsack capacity }W\text{, where } W\in{\mathbb{N}}.$
+* $\text{A set of candidate items }N=\lbrace{}1,2,...,n\rbrace{}\text{, where }n\text{ is the number of candidate items, and thus }n\in{\mathbb{N}}.$
+* $\text{A weight function }w\text{ defining the weight for each item such that }w_i:N\rightarrow{\mathbb{R}}.$
+* $\text{A value function }v\text{ defining the value for each item such that }v_i:N\rightarrow{\mathbb{R}}.$
 
 By creating a binary decision variable $x_i\space\forall{i\in{N}}$, we can express the binary knapsack problem as an integer linear program:
 
